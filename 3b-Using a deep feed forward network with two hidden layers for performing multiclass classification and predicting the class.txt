@@ -1,0 +1,29 @@
+model=Sequential()
+model.add(Dense(8, input_dim=len(xtrain[0,:]), activation='relu'))
+
+model.add(Dense(4, activation='relu'))
+model.add(Dense(1, activation='relu'))
+print(model.summary())
+
+model.compile(loss='BinaryCrossentropy', optimizer='adam', metrics=['accuracy'])
+
+history = model.fit(xtrain, ytrain, validation_data=(XVALID, YVALID), epochs=100, batch_size=10, verbose=1)
+
+_, accuracy = model.evaluate(XVALID, YVALID)
+print('Accuracy: %.2f' % (accuracy*100))
+
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('Model accuracy')
+plt.ylabel('Accuracy')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Validation'], loc='upper left')
+plt.show()
+
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('Model loss')
+plt.ylabel('Loss')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Validation'], loc='upper left')
+plt.show()

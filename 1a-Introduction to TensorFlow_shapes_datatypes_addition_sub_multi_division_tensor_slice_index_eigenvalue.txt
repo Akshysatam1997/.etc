@@ -1,0 +1,99 @@
+from numpy import diag
+from numpy import array
+A = array([[2,4,1],[3,4,5],[7,4,6]])
+B = diag(A)
+print("diagonal element:\n",B)
+D = diag(B)
+print("diagonal matrix:\n",D)
+
+from numpy import tril
+from numpy import triu
+from numpy import array
+A = array([[2,4,1],[3,4,5],[7,4,6]])
+B = tril(A)
+print(B)
+C = triu(A)
+print(C)
+
+import torch
+tensor1 = torch.tensor([[2,3,4]])
+print(tensor1,tensor1.shape)
+tensor2 = torch.tensor([[6,8,4],
+                      [8,2,0]])
+print(tensor2,tensor2.shape)
+tensor3 = torch.tensor([[4,5,6],
+                        [6,8,9],
+                        [23,10,12]])
+print(tensor3,tensor3.shape)
+
+import torch
+tensor1 = torch.tensor([2,3,4],dtype=torch.complex64)
+print({tensor1} | {tensor1.dtype})
+tensor2 = torch.tensor([[3,5,6],
+                      [5,7,8]],dtype=torch.int64)
+print({tensor2} | {tensor2.dtype})
+tensor3 = torch.tensor([[4,5,6],
+                        [6,8,9],
+                        [23,10,12]], dtype = torch.float32)
+print({tensor3} | {tensor3.dtype})
+
+import torch
+tensor1 = torch.tensor([[3,5,6],
+                      [5,7,8]])
+tensor2 = torch.tensor([[6,8,4],
+                      [8,2,0]])
+A = tensor1 + tensor2
+print(A)
+B = tensor1 - tensor2
+print(B)
+C = tensor1 * tensor2
+print(C)
+D = tensor1 / tensor2
+print(D)
+
+import torch
+tensor_1 = torch.tensor([10,12,18,9,8,14,11,13,20,18,30,12])
+R = tensor_1.reshape(2,6)
+M = tensor_1.reshape(3,4)
+N = tensor_1.reshape(4,3)
+print(R)
+print(M)
+print(N)
+
+import torch
+tensor_1=torch.tensor([[10, 12, 18,  9],
+                      [ 8, 14, 11, 13],
+                      [20, 18, 30, 12]])
+S= tensor_1[:2,:2]
+T= tensor_1[:,3]
+D= tensor_1[2,:]
+print(S)
+print(T)
+print(D)
+
+import torch
+tensor_1=torch.tensor([[10, 12, 18,  9],
+                      [ 8, 14, 11, 13],
+                      [20, 18, 30, 12]])
+M = tensor_1[1,2]
+N = tensor_1[2,3]
+print(M)
+print(N)
+
+import torch
+M=torch.tensor([[10, 12, 18,  9],
+        [ 8, 14, 11, 13],
+        [20, 18, 30, 12]])
+N=torch.tensor([[1,2,3,3],
+              [3,4,4,6],
+              [3,4,5,5]])
+multiply = M*N
+print(multiply)
+
+import numpy as np
+from numpy.linalg import eig
+a = np.array([[-5, 2],
+              [-7, 4]])
+w,v=eig(a)
+print('E-value:', w)
+print('E-vector', v)

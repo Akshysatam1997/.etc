@@ -1,0 +1,56 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.utils import plot_model
+
+df = np.loadtxt('winequality-red.csv', delimiter=",", skiprows=1)
+print(df.shape)
+
+print(df[0:5, 0])
+
+np.set_printoptions(formatter={'float': lambda x: "{0:0.2f}".format(x)})
+print(df[0:5, 0])
+
+df[df[:, -1] < 5.5, -1] = 0  
+df[df[:, -1] >= 5.5, -1] = 1
+print(df[0:10, -1])
+
+np.random.shuffle(df)
+print(df[0:10, 0])
+
+index50p = int(0.5 * len(df[:, 0]))
+print(index50p)
+
+XVALID = df[0:index50p, 0:-1]
+print(XVALID.shape)
+YVALID = df[0:index50p, -1]
+print(YVALID.shape)
+xtrain = df[index50p:, 0:-1]
+ytrain = df[index50p:, -1]
+print(xtrain.shape)
+print(ytrain.shape)
+
+plt.hist(xtrain [:,0])
+plt.ylabel('0th column')
+plt.show()
+plt.hist(XVALID [:,0])
+plt.ylabel('0th column')
+plt.show()
+plt.hist(ytrain)
+plt.ylabel('0th column')
+plt.show()
+plt.hist(YVALID)
+plt.ylabel('0th column')
+plt.show()
+print('Print Data')
+print(xtrain.shape)
+print(ytrain.shape)
+print(XVALID.shape)
+print(YVALID.shape)
+print('print record')
+print(xtrain[0:3, ])
+print(ytrain[0:3])
+print(XVALID[0:3, ])
+print(YVALID[0:3])
